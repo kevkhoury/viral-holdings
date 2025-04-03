@@ -14,12 +14,29 @@
       align-items: center;
     }
     img {
-      max-width: 100%;
-      max-height: 100%;
+      /* Adjust these values as needed for your desired sizing */
+      max-width: 80%;
+      max-height: 80%;
+      /* Animation: scales in from 0.5 to 1 with a bounce effect */
+      animation: logoAnimation 1.5s ease-out forwards;
+    }
+    @keyframes logoAnimation {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="logo.svg" alt="Viral Holdings Logo">
+  <img src="Group 7.svg" alt="Viral Holdings Logo">
 </body>
 </html>
