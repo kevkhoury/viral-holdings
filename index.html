@@ -19,4 +19,61 @@
     body {
       perspective: 1000px;
     }
-    /* Container for*
+    /* Container for the logo, animated on load and responsive to mouse movement */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.1s ease-out;
+      animation: logoEntrance 1.5s ease-out forwards;
+    }
+    /* The logo itself: resized to 100% width with a max-width limit */
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 500px; /* Adjust as needed */
+      display: block;
+    }
+    /* Entrance animation with a bounce effect */
+    @keyframes logoEntrance {
+      0% {
+        transform: scale(0.5) rotateX(0deg) rotateY(0deg);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.1) rotateX(0deg) rotateY(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1) rotateX(0deg) rotateY(0deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="logo.svg" alt="Viral Holdings Logo">
+  </div>
+  <script>
+    // Add interactive 3D rotation based on mouse position
+    document.addEventListener('mousemove', (e) => {
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      const centerX = windowWidth / 2;
+      const centerY = windowHeight / 2;
+      const deltaX = (e.clientX - centerX) / centerX;
+      const deltaY = (e.clientY - centerY) / centerY;
+      const maxRotation = 10; // Maximum rotation in degrees
+      const rotateY = deltaX * maxRotation;
+      const rotateX = -deltaY * maxRotation;
+      const logoContainer = document.querySelector('.logo-container');
+      if (logoContainer) {
+        // Apply the rotation while preserving the initial scale and animation
+        logoContainer.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      }
+    });
+  </script>
+</body>
+</html>
+
